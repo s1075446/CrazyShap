@@ -13,6 +13,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 public final class MyAppGlideModule : AppGlideModule()
 
 class MainActivity : AppCompatActivity() {
+
+    var Flag:Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -25,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         .into(img)
 
         Toast.makeText(baseContext, "作者：劉玉婷", Toast.LENGTH_LONG).show()
+        rndShape()
 
         imgNext.setOnLongClickListener(object : View.OnLongClickListener {
             override fun onLongClick(p0: View?): Boolean {
@@ -33,5 +37,20 @@ class MainActivity : AppCompatActivity() {
                 return true
             }
         })
+        imgNext.setOnClickListener(object:View.OnClickListener{
+            override fun onClick(p0: View?){
+                rndShape()
+            }
+        })
+    }
+    fun rndShape(){
+        Flag=(1..4).random()
+        when(Flag){
+            1->imgNext.setImageResource(R.drawable.circle)
+            1->imgNext.setImageResource(R.drawable.square)
+            1->imgNext.setImageResource(R.drawable.star)
+            1->imgNext.setImageResource(R.drawable.triangle)
+        }
+
     }
 }
