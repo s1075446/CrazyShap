@@ -32,11 +32,14 @@ class MainActivity : AppCompatActivity() {
 
         imgNext.setOnLongClickListener(object : View.OnLongClickListener {
             override fun onLongClick(p0: View?): Boolean {
-                intent = Intent(this@MainActivity, GameActivity::class.java)
+                intent = Intent(this@MainActivity, GameActivity::class.java).apply{
+                    putExtra("形狀",Flag)
+                }
                 startActivity(intent)
                 return true
             }
         })
+
         imgNext.setOnClickListener(object:View.OnClickListener{
             override fun onClick(p0: View?){
                 rndShape()
